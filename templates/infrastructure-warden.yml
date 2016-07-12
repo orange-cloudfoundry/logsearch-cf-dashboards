@@ -29,8 +29,8 @@ networks:
 - name: logsearch_cf_dashboards1
   type: manual
   subnets:
-  - range: 10.244.192.0/24
+  - range: 10.244.28.0/24
     name: logsearch_cf_dashboards1
-    gateway: 10.244.192.1
+    gateway: 10.244.28.1
     static:
-      - 10.244.192.2 - 10.244.192.60
+      - 10.244.28.2 - 10.244.28.60
