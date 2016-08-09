@@ -1,0 +1,15 @@
+---
+name: import_dashboard
+packages:
+- elasticdump-image
+templates:
+  bin/run: bin/run
+  helpers/ctl_setup.sh: helpers/ctl_setup.sh
+  helpers/ctl_utils.sh: helpers/ctl_utils.sh
+  bin/errand.sh.erb: bin/errand.sh
+
+properties:
+  elasticsearch.host:
+    description: elasticsearch hostname or IP address
+  elasticsearch.port:
+    description: elasticsearch port number

@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+export PATH=$PATH:/var/vcap/packages/elasticdump-image
+
+ES_HOST='<%= p("elasticsearch.host") %>'
+ES_PORT='<%= p("elasticsearch.port") %>'
+
+FILE=/var/vcap/src/kibana-exported.json
+
+elasticdump \
+    --input=$FILE
+    --output=http://$ES_HOST:$ES_PORT/.kibana  \
+    --type=data
+
