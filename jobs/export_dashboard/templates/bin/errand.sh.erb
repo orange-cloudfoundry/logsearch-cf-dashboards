@@ -1,35 +1,18 @@
 #!/bin/bash
 set -e
 set -u
-#sudo su -
-#export PATH=$PATH:/var/vcap/packages/elasticdump-image
-#export PATH=$PATH:/var/vcap/packages/docker/bin
 
-# Setup env vars and folders for the webapp_ctl script
-#source /var/vcap/jobs/taskrabbit_elasticsearch_dump_image/helpers/ctl_setup.sh 'taskrabbit_elasticsearch_dump_image'
-
-#docker --host unix:///var/vcap/sys/run/docker/docker.sock load -i /var/vcap/packages/elasticdump-image/taskrabbit_elasticsearch_dump.tgz
+export PATH=$PATH:/var/vcap/packages/docker/bin
 
 ES_HOST='<%= p("elasticsearch.host") %>'
 ES_PORT='<%= p("elasticsearch.port") %>'
-DOCKER_HOST='<%= p("docker.host") %>'
-DOCKER_PORT='<%= p("docker.port") %>'
+DOCKER_HOST='<%= p("remote-docker.host") %>'
+DOCKER_PORT='<%= p("remote-docker.port") %>'
 
-
-docker run --rm -ti taskrabbit/elasticsearch-dump -h $DOCKER_HOST:$DOCKER_PORT \
+docker -D -H $DOCKER_HOST:$DOCKER_PORT run -v /var/vcap/store/dashboards:/opt/dashboards --rm -ti taskrabbit/elasticsearch-dump \
     --input=http://$ES_HOST:$ES_PORT/.kibana \
     --output=$  \
     --type=data \
     --searchBody='{"filter": { "or": [ {"type": {"value": "dashboard"}}, {"type" : {"value":"visualization"}}] }}' \
-    > /var/vcap/store/dashborads/kibana-exported.json
-
-
-
-#docker  --host unix:///var/vcap/sys/run/docker/docker.sock run --rm -ti taskrabbit/elasticsearch-dump \  
-#    --input=http://$ES_HOST:$ES_PORT/.kibana  \
-#    --output=$ \
-#    --type=data \
-#    --searchBody='{"filter": { "or": [ {"type": {"value": "dashboard"}}, {"type" : {"value":"visualization"}}] }}' \
-#    > kibana-exported.json
-
+    > /opt/dashboards/kibana-exported.json
 

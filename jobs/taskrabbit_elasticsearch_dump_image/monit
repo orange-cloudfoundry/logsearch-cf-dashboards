@@ -1,5 +1,0 @@
-check process taskrabbit_elasticsearch_dump_image
-  with pidfile /var/vcap/sys/run/taskrabbit_elasticsearch_dump_image/taskrabbit_elasticsearch_dump_image.pid
-  start program "/var/vcap/jobs/taskrabbit_elasticsearch_dump_image/bin/monit_debugger install_ctl '/var/vcap/jobs/taskrabbit_elasticsearch_dump_image/bin/install_ctl start'"
-  stop program "/var/vcap/jobs/taskrabbit_elasticsearch_dump_image/bin/monit_debugger install_ctl '/var/vcap/jobs/taskrabbit_elasticsearch_dump_image/bin/install_ctl stop'"
-  group vcap

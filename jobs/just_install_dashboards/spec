@@ -1,7 +1,6 @@
 ---
-name: just_install_packages
+name: just_install_dashboards
 packages: []
 templates:
   config/kibana-exported.json.erb: config/kibana-exported.json
-  ignoreme: ignoreme
 properties: {}

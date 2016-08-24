@@ -13,7 +13,7 @@ properties:
     description: elasticsearch hostname or IP address
   elasticsearch.port:
     description: elasticsearch port number
-  docker.host:
+  remote-docker.host:
     description: docker hostname or IP address
-  docker.port:
+  remote-docker.port:
     description: docker port number

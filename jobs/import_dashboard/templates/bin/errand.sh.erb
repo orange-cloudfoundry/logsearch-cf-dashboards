@@ -2,14 +2,16 @@
 set -e
 set -u
 
+export PATH=$PATH:/var/vcap/packages/docker/bin
+
 ES_HOST='<%= p("elasticsearch.host") %>'
 ES_PORT='<%= p("elasticsearch.port") %>'
-DOCKER_HOST='<%= p("docker.host") %>'
-DOCKER_PORT='<%= p("docker.port") %>'
+DOCKER_HOST='<%= p("remote-docker.host") %>'
+DOCKER_PORT='<%= p("remote-docker.port") %>'
 
-FILE=/var/vcap/jobs/just_install_packages/config/kibana-exported.json
+FILE=/opt/dashboards/kibana-exported.json
 
-docker run --rm -ti taskrabbit/elasticsearch-dump -h $DOCKER_HOST:$DOCKER_PORT \
+docker -D -H $DOCKER_HOST:$DOCKER_PORT run -v /var/vcap/jobs/just_install_dashboards/config:/opt/dashboards --rm -ti taskrabbit/elasticsearch-dump \
     --input=$FILE \
     --output=http://$ES_HOST:$ES_PORT/.kibana  \
     --type=data
