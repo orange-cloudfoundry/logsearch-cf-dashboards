@@ -1,11 +1,10 @@
 ---
 name: export_dashboard
-packages: [elasticdump-image]
+packages:
+- docker
 templates:
   bin/run: bin/run
   bin/errand.sh.erb: bin/errand.sh
-#  bin/monit_debugger: bin/monit_debugger
-#  bin/install_ctl: bin/install_ctl
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
 
@@ -14,4 +13,8 @@ properties:
     description: elasticsearch hostname or IP address
   elasticsearch.port:
     description: elasticsearch port number
+  docker.host:
+    description: docker hostname or IP address
+  docker.port:
+    description: docker port number
 
