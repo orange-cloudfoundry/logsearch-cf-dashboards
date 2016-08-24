@@ -1,14 +1,16 @@
 #!/bin/bash
 set -e
-export PATH=$PATH:/var/vcap/packages/elasticdump-image
+set -u
 
 ES_HOST='<%= p("elasticsearch.host") %>'
 ES_PORT='<%= p("elasticsearch.port") %>'
+DOCKER_HOST='<%= p("docker.host") %>'
+DOCKER_PORT='<%= p("docker.port") %>'
 
-FILE=/var/vcap/src/kibana-exported.json
+FILE=/var/vcap/jobs/just_install_packages/config/kibana-exported.json
 
-elasticdump \
-    --input=$FILE
+docker run --rm -ti taskrabbit/elasticsearch-dump -h $DOCKER_HOST:$DOCKER_PORT \
+    --input=$FILE \
     --output=http://$ES_HOST:$ES_PORT/.kibana  \
     --type=data
 

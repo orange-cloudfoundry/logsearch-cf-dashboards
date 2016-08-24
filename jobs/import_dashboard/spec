@@ -1,7 +1,7 @@
 ---
 name: import_dashboard
 packages:
-- elasticdump-image
+- docker
 templates:
   bin/run: bin/run
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
@@ -13,3 +13,7 @@ properties:
     description: elasticsearch hostname or IP address
   elasticsearch.port:
     description: elasticsearch port number
+  docker.host:
+    description: docker hostname or IP address
+  docker.port:
+    description: docker port number
