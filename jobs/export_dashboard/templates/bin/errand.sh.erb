@@ -9,10 +9,12 @@ ES_PORT='<%= p("elasticsearch.port") %>'
 DOCKER_HOST='<%= p("remote-docker.host") %>'
 DOCKER_PORT='<%= p("remote-docker.port") %>'
 
+N=`date +%s`
+
 docker -D -H $DOCKER_HOST:$DOCKER_PORT run -v /var/vcap/store/dashboards:/opt/dashboards --rm -ti taskrabbit/elasticsearch-dump \
     --input=http://$ES_HOST:$ES_PORT/.kibana \
-    --output=$  \
+    --output=/opt/dashboards/kibana-exported.$N.json  \
     --type=data \
-    --searchBody='{"filter": { "or": [ {"type": {"value": "dashboard"}}, {"type" : {"value":"visualization"}}] }}' \
-    > /opt/dashboards/kibana-exported.json
+    --searchBody='{"filter": { "or": [ {"type": {"value": "dashboard"}}, {"type" : {"value":"visualization"}}, {"type" : {"value":"search"}}] }}'
+
 
