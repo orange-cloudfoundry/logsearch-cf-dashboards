@@ -11,7 +11,7 @@ DOCKER_PORT='<%= p("remote-docker.port") %>'
 
 FILE=/opt/dashboards/kibana-exported.json
 
-docker -D -H $DOCKER_HOST:$DOCKER_PORT run -v /var/vcap/jobs/just_install_dashboards/config:/opt/dashboards --rm -ti taskrabbit/elasticsearch-dump \
+docker -D -H $DOCKER_HOST:$DOCKER_PORT run -v /var/vcap/jobs/just_install_dashboards/config:/opt/dashboards --rm -i taskrabbit/elasticsearch-dump \
     --input=$FILE \
     --output=http://$ES_HOST:$ES_PORT/.kibana  \
     --type=data

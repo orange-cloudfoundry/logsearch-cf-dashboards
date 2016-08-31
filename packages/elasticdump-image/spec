@@ -1,4 +1,0 @@
----
-name: elasticdump-image
-dependencies: []
-files: [docker-images/taskrabbit_elasticsearch_dump.tgz]

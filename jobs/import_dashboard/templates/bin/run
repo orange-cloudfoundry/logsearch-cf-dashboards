@@ -6,6 +6,8 @@ set -u # report the usage of uninitialized variables
 # Setup env vars and folders for the webapp_ctl script
 source /var/vcap/jobs/import_dashboard/helpers/ctl_setup.sh 'import_dashboard'
 
+/var/vcap/jobs/import_dashboard/bin/errand.sh
+
 EXITSTATUS=0
 
 echo "Errand import_dashboard is complete; exit status $EXITSTATUS"

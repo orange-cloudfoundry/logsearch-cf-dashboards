@@ -1,0 +1,16 @@
+---
+name: ip_filter
+packages: []
+templates:
+  bin/ctl: bin/ctl
+  bin/monit_debugger: bin/monit_debugger
+  data/properties.sh.erb: data/properties.sh
+  helpers/ctl_setup.sh: helpers/ctl_setup.sh
+  helpers/ctl_utils.sh: helpers/ctl_utils.sh
+
+properties:
+  ip-filter.ips:
+    description: Array of IP addresses allowed to connect Docker
+  ip-filter.port:
+    description: Docker port number
+

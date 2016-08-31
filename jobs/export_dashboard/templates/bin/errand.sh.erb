@@ -11,7 +11,7 @@ DOCKER_PORT='<%= p("remote-docker.port") %>'
 
 N=`date +%s`
 
-docker -D -H $DOCKER_HOST:$DOCKER_PORT run -v /var/vcap/store/dashboards:/opt/dashboards --rm -ti taskrabbit/elasticsearch-dump \
+docker -D -H $DOCKER_HOST:$DOCKER_PORT run -v /var/vcap/store/dashboards:/opt/dashboards --rm -i taskrabbit/elasticsearch-dump \
     --input=http://$ES_HOST:$ES_PORT/.kibana \
     --output=/opt/dashboards/kibana-exported.$N.json  \
     --type=data \

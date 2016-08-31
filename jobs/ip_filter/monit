@@ -1,0 +1,5 @@
+check process ip_filter
+  with pidfile /var/vcap/sys/run/ip_filter/ip_filter.pid
+  start program "/var/vcap/jobs/ip_filter/bin/monit_debugger ip_filter_ctl '/var/vcap/jobs/ip_filter/bin/ctl start'"
+  stop program "/var/vcap/jobs/ip_filter/bin/monit_debugger ip_filter_ctl '/var/vcap/jobs/ip_filter/bin/ctl stop'"
+  group vcap
