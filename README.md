@@ -1,4 +1,12 @@
-# BOSH Release for logsearch-cf-dashboards
+# BOSH Release for Logsearch-cf-dashboards
+
+This release is an add-on for [Logsearch] (http://www.logsearch.io) and its [BOSH release] (https://github.com/logsearch/logsearch-boshrelease) which offers import and export of dashboards, visualizations and searches in Elasticsearch under the index `.kibana`.
+
+## Prerequisite
+
+The release has been tested with
+- Logsearch v203.0.0 (Kibana v4.4) and
+- [Docker BOSH release] (https://github.com/cloudfoundry-community/docker-boshrelease) v27.
 
 ## Usage
 
@@ -8,69 +16,34 @@ To use this bosh release, first upload it to your bosh:
 bosh target BOSH_HOST
 git clone https://github.com/cloudfoundry-community/logsearch-cf-dashboards-boshrelease.git
 cd logsearch-cf-dashboards-boshrelease
-bosh upload release releases/logsearch-cf-dashboards-1.yml
+bosh create release --force
+bosh upload release
 ```
 
-For [bosh-lite](https://github.com/cloudfoundry/bosh-lite), you can quickly create a deployment manifest & deploy a cluster:
+### Deployment Manifests and Deploy
+
+To create your stub manifest you can use our openstack example under examples/stub.yml.
+
+For Openstack you can quickly create a deployment manifest & deploy:
 
 ```
-templates/make_manifest warden
+./scripts/generate_deployment_manifest openstack FULL_PATH_TO_YOUR_STUB_MANIFEST > FULL_PATH_TO_FINAL_MANIFEST
+bosh deployment FULL_PATH_TO_FINAL_MANIFEST
 bosh -n deploy
 ```
 
-For AWS EC2, create a single VM:
+### Import Dashboards - Visualization - Searches
+
+To import default dashboards, visualization and searches, execute as follows:
 
 ```
-templates/make_manifest aws-ec2
-bosh -n deploy
+bosh run errand import
 ```
 
-### Override security groups
+### Export Dashboards - Visualization - Searches
 
-For AWS & Openstack, the default deployment assumes there is a `default` security group. If you wish to use a different security group(s) then you can pass in additional configuration when running `make_manifest` above.
-
-Create a file `my-networking.yml`:
-
-``` yaml
----
-networks:
-  - name: logsearch-cf-dashboards1
-    type: dynamic
-    cloud_properties:
-      security_groups:
-        - logsearch-cf-dashboards
-```
-
-Where `- logsearch-cf-dashboards` means you wish to use an existing security group called `logsearch-cf-dashboards`.
-
-You now suffix this file path to the `make_manifest` command:
+To export dashboards, visualization and searches from your Logsearch (Elasticsearch), execute as follows:
 
 ```
-templates/make_manifest openstack-nova my-networking.yml
-bosh -n deploy
+bosh run errand export
 ```
-
-### Development
-
-As a developer of this release, create new releases and upload them:
-
-```
-bosh create release --force && bosh -n upload release
-```
-
-### Final releases
-
-To share final releases:
-
-```
-bosh create release --final
-```
-
-By default the version number will be bumped to the next major number. You can specify alternate versions:
-
-
-```
-bosh create release --final --version 2.1
-```
-
-After the first release you need to contact [Dmitriy Kalinin](mailto://dkalinin@pivotal.io) to request your project is added to https://bosh.io/releases (as mentioned in README above).

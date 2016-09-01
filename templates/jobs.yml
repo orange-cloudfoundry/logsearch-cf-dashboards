@@ -1,23 +1,57 @@
-meta:
-  environment: ~
+releases:
+- name: docker
+  version: latest
+- name: logsearch-cf-dashboards
+  version: latest
 
-update:
-  canaries: 1
-  max_in_flight: 50
-  canary_watch_time: 1000-30000
-  update_watch_time: 1000-30000
-  serial: false
+properties:
+  docker:
+    tcp_address: 0.0.0.0
+    port: 4243
+  ip-filter:
+    ips: (( jobs.export.networks.default.static_ips jobs.import.networks.default.static_ips ))
+    port: (( .properties.docker.port ))
+  elasticsearch:
+    host: (( merge ))
+    port: (( merge ))
+  remote-docker:
+    host: (( jobs.elasticdump.networks.default.static_ips ))
+    port: (( .properties.docker.port ))
 
 jobs:
-  - name: just_install_packages
-    templates:
-    - name: just_install_packages
-      release: logsearch-cf-dashboards
-    instances: 1
-    persistent_disk: 0
-    resource_pool: small_z1
-    networks: (( param "please set just_install_package networks" ))
+- name: elasticdump
+  templates:
+  - name: docker
+    release: docker
+  - name: just_install_dashboards
+    release: logsearch-cf-dashboards
+  - name: ip_filter
+    release: logsearch-cf-dashboards
+  instances: 1
+  resource_pool: small_z1
+  persistent_disk: 10400
+  networks:
+  - name: default
+    static_ips: (( static_ips(0) ))
+    
+- name: export
+  templates:
+  - name: export_dashboard
+    release: logsearch-cf-dashboards
+  instances: 1
+  resource_pool: small_z1
+  lifecycle: errand
+  networks:
+  - name: default
+    static_ips: (( static_ips(1) ))
 
-networks: (( param "please set networks" ))
-
-properties: {}
+- name: import
+  templates:
+  - name: import_dashboard
+    release: logsearch-cf-dashboards
+  instances: 1
+  resource_pool: small_z1
+  lifecycle: errand
+  networks:
+  - name: default
+    static_ips: (( static_ips(2) ))
