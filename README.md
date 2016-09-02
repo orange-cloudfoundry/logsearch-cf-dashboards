@@ -58,13 +58,13 @@ The exported dashboards, visualization and searches from your Logsearch (Elastic
 
 Inspired by the project [elasticdump] (https://github.com/taskrabbit/elasticsearch-dump) we created a BOSH release to import and export dashboards, visualization and searches for the Cloud Foundry metrics inside Logsearch (Kibana). The release includes 4 jobs: import and export errand jobs, IP address filter job and a job to upload default dashboards, visualization and searches. The last 2 jobs are located on a single instance. This instance contains a Docker server which executes elasticdump to import and export.
 
-## Import and Export Errand Jobs
+### Import and Export Errand Jobs
 
 These jobs represent 2 errands to import and export dashboards, visualization and searches. Each job includes elasticdump and a Docker client which sends commands to the Docker server on the main instance. The jobs take as variables the Docker server IP address and port (main instance) and IP address and port of Elasticsearch.
 
-## IP Address Filter job
+### IP Address Filter job
 
-This is job aims to filter incoming requests to the Docker server on the main instance with iptables since the server is bind to `0.0.0.0`. So we limited access to the server to all the docker requests exept from the import and export instances.
+This is job aims to filter incoming requests to the Docker server on the main instance with iptables since the server is bind to `0.0.0.0`. So we limited access to the server to all the docker requests except from the import and export instances.
 
 
 
