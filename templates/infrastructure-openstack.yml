@@ -4,7 +4,7 @@ meta:
   default_stemcell:
     name: bosh-openstack-kvm-ubuntu-trusty-go_agent
     version: latest
-	
+
   resource_pools:
     small:
       cloud_properties:

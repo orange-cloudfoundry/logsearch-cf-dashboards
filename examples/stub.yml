@@ -1,26 +1,5 @@
----
 name: docker-elasticdump
 director_uuid: e753e1bb-dfe5-4605-b361-505268c5f9f5
-
-releases:
-- name: docker
-  version: latest
-- name: logsearch-cf-dashboards
-  version: latest
-
-compilation:
-  cloud_properties:
-    instance_type: m1.small
-  network: default
-  reuse_compilation_vms: true
-  workers: 1
-
-update:
-  canaries: 0
-  canary_watch_time: 30000-300000
-  update_watch_time:  30000-300000
-  max_in_flight: 3
-  serial: false
 
 networks:
 - name: default
@@ -41,67 +20,7 @@ networks:
       security_groups:
       - tf-bosh
 
-resource_pools:
-- name: small_z1
-  cloud_properties:
-    instance_type: m1.small
-  network: default
-  stemcell:
-    name: bosh-openstack-kvm-ubuntu-trusty-go_agent
-    version: latest
-
-jobs:
-- name: elasticdump
-  templates:
-  - name: docker
-    release: docker
-  - name: just_install_dashboards
-    release: logsearch-cf-dashboards
-  - name: ip_filter
-    release: logsearch-cf-dashboards
-  instances: 1
-  resource_pool: small_z1
-  persistent_disk: 10400
-  networks:
-  - name: default
-    static_ips:
-    - 192.168.110.100
-
-- name: export
-  templates:
-  - name: export_dashboard
-    release: logsearch-cf-dashboards
-  instances: 1
-  resource_pool: small_z1
-  lifecycle: errand
-  networks:
-  - name: default
-    static_ips:
-    - 192.168.110.101
-
-- name: import
-  templates:
-  - name: import_dashboard
-    release: logsearch-cf-dashboards
-  instances: 1
-  resource_pool: small_z1
-  lifecycle: errand
-  networks:
-  - name: default
-    static_ips:
-    - 192.168.110.102
-
 properties:
-  docker:
-    tcp_address: 0.0.0.0
-  ip-filter:
-    ips:
-    - 192.168.110.101
-    - 192.168.110.102
-    port: 4243
   elasticsearch:
     host: 192.168.130.40
     port: 9200
-  remote-docker:
-    host: 192.168.110.100
-    port: 4243
