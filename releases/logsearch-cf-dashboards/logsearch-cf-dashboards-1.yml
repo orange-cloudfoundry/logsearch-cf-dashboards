@@ -1,0 +1,50 @@
+---
+packages:
+- name: docker
+  version: !binary |-
+    Y2VmMmNiYzdiM2UyODk4ZjE5NDI2ZjRhNzg1NTZlY2ZmOWViOWJiMA==
+  fingerprint: !binary |-
+    Y2VmMmNiYzdiM2UyODk4ZjE5NDI2ZjRhNzg1NTZlY2ZmOWViOWJiMA==
+  sha1: !binary |-
+    NmE3YTgzM2I4NzIzMjYyZmJmZmMxNTg1YjNhOWI1MWI5ZDE5ZDQ0Mg==
+  dependencies: []
+jobs:
+- name: just_install_dashboards
+  version: !binary |-
+    YzdiZTE5YmQyYjY4NmU1NTFkNjM4NzQyMjU3NWM2ZWI0M2FiN2Q0OA==
+  fingerprint: !binary |-
+    YzdiZTE5YmQyYjY4NmU1NTFkNjM4NzQyMjU3NWM2ZWI0M2FiN2Q0OA==
+  sha1: !binary |-
+    NjhkNjFhZjhkMWVmODc1NmYxOTJiNGEyNDZkYTVhMjIzMWZiNDc4Mg==
+- name: ip_filter
+  version: !binary |-
+    MTIzMjc1ODkzMGNiZDE2YjE5MTNiMDcyMjliYTRhYzRhYmQ0YTBjMA==
+  fingerprint: !binary |-
+    MTIzMjc1ODkzMGNiZDE2YjE5MTNiMDcyMjliYTRhYzRhYmQ0YTBjMA==
+  sha1: !binary |-
+    NTBlMDNmYjEyN2Q2OWY0ZWE1OWRlMGZiMzFjZDdmZGI3ZGNmZTA3Yg==
+- name: export_dashboard
+  version: !binary |-
+    YzJiNzFiYTliZTkyOGE3MmQ2YzE4MDllZDkxMjEwNWI5MDM2M2U2Yw==
+  fingerprint: !binary |-
+    YzJiNzFiYTliZTkyOGE3MmQ2YzE4MDllZDkxMjEwNWI5MDM2M2U2Yw==
+  sha1: !binary |-
+    MzFkY2QyNDE0OTUxNDgwN2NhMGNjZGEwNWM0ZWM5MzdkYTkwNGQ0ZQ==
+- name: import_dashboard
+  version: !binary |-
+    NTAxYmEwZmIwMzY2OTU4MjVhYTNlOWZkMjkzNzQzMGI2NDcyMjg4Yw==
+  fingerprint: !binary |-
+    NTAxYmEwZmIwMzY2OTU4MjVhYTNlOWZkMjkzNzQzMGI2NDcyMjg4Yw==
+  sha1: !binary |-
+    OGRjMTE0YWViMDMwYjgxYjNhNmI3NGQ3ZmMzMzM0ZjdmZGMwNDEwNA==
+license:
+  version: !binary |-
+    ZWYzZjJiNjIzNDMwMzE3ZTEzMjAxNDJiMWU3MTdjZGE5MDA5ZjlhNQ==
+  fingerprint: !binary |-
+    ZWYzZjJiNjIzNDMwMzE3ZTEzMjAxNDJiMWU3MTdjZGE5MDA5ZjlhNQ==
+  sha1: !binary |-
+    NTc0NzA5ODFjNWU4NzdjZTA4Mjc2YWEwMWU3MzVlODk2OGI0MTIwYg==
+commit_hash: 8edf87a3
+uncommitted_changes: true
+name: logsearch-cf-dashboards
+version: '1'
