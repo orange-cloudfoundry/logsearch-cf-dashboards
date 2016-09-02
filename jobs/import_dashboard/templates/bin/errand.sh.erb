@@ -6,7 +6,9 @@ export PATH=$PATH:/var/vcap/packages/docker/bin
 
 ES_HOST='<%= p("elasticsearch.host") %>'
 ES_PORT='<%= p("elasticsearch.port") %>'
-DOCKER_HOST='<%= p("remote-docker.host") %>'
+<% p('remote-docker.host').each do |host| %>
+DOCKER_HOST='<%= host %>'
+<% end %>
 DOCKER_PORT='<%= p("remote-docker.port") %>'
 
 FILE=/opt/dashboards/kibana-exported.json

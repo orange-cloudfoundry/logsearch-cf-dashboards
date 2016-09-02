@@ -18,6 +18,8 @@ properties:
     host: (( jobs.elasticdump.networks.default.static_ips ))
     port: (( .properties.docker.port ))
 
+networks: (( merge ))
+
 jobs:
 - name: elasticdump
   templates:
