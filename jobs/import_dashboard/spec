@@ -7,6 +7,9 @@ templates:
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
   bin/errand.sh.erb: bin/errand.sh
+  config/docker.cacert.erb: config/docker.cacert
+  config/client.cert.erb: config/client.cert
+  config/client.key.erb: config/client.key
 
 properties:
   elasticsearch.host:
@@ -17,3 +20,9 @@ properties:
     description: docker hostname or IP address
   remote-docker.port:
     description: docker port number
+  remote-docker.tls_cacert:
+    description: "Trust only remotes providing a certificate signed by the CA given here"
+  docker-client.tls_cert:
+    description: "TLS certificate in one line"
+  docker-client.tls_key:
+    description: "TLS key in one line"
