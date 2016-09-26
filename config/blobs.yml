@@ -19,3 +19,8 @@ docker/autoconf-2.69.tar.gz:
   sha: !binary |-
     NTYyNDcxY2JjYjBkZDBmYTQyYTc2NjY1YWNmMGRiYjY4NDc5Yjc4YQ==
   size: 1927468
+docker-images/taskrabbit_elasticsearch_dump.tgz:
+  object_id: 47ebed64-665b-411c-9577-5b21be9f18b9
+  sha: !binary |-
+    NTY2MjFiZDZiOGQ1MzUzZjQ4MDczZTgxMGU2YzEzZjBhNTZmMzAwYg==
+  size: 40434688
