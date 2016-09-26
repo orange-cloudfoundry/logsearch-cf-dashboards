@@ -1,0 +1,65 @@
+---
+packages:
+- name: elasticdump-image
+  version: !binary |-
+    ZTFjNDJiZTM4OTE4ZWIzMDNjMTM3MjE3OTdkNDNkNGYzOWFlMzU4MQ==
+  fingerprint: !binary |-
+    ZTFjNDJiZTM4OTE4ZWIzMDNjMTM3MjE3OTdkNDNkNGYzOWFlMzU4MQ==
+  sha1: !binary |-
+    Nzc0ZDNiYzBhNjEzZmMxNmNmM2M2NjFkYTk0ZTZiNDdkNjdjODBhYg==
+  dependencies: []
+- name: docker
+  version: !binary |-
+    Y2VmMmNiYzdiM2UyODk4ZjE5NDI2ZjRhNzg1NTZlY2ZmOWViOWJiMA==
+  fingerprint: !binary |-
+    Y2VmMmNiYzdiM2UyODk4ZjE5NDI2ZjRhNzg1NTZlY2ZmOWViOWJiMA==
+  sha1: !binary |-
+    NmE3YTgzM2I4NzIzMjYyZmJmZmMxNTg1YjNhOWI1MWI5ZDE5ZDQ0Mg==
+  dependencies: []
+jobs:
+- name: just_install_dashboards
+  version: !binary |-
+    YzdiZTE5YmQyYjY4NmU1NTFkNjM4NzQyMjU3NWM2ZWI0M2FiN2Q0OA==
+  fingerprint: !binary |-
+    YzdiZTE5YmQyYjY4NmU1NTFkNjM4NzQyMjU3NWM2ZWI0M2FiN2Q0OA==
+  sha1: !binary |-
+    NjhkNjFhZjhkMWVmODc1NmYxOTJiNGEyNDZkYTVhMjIzMWZiNDc4Mg==
+- name: ip_filter
+  version: !binary |-
+    MTIzMjc1ODkzMGNiZDE2YjE5MTNiMDcyMjliYTRhYzRhYmQ0YTBjMA==
+  fingerprint: !binary |-
+    MTIzMjc1ODkzMGNiZDE2YjE5MTNiMDcyMjliYTRhYzRhYmQ0YTBjMA==
+  sha1: !binary |-
+    NTBlMDNmYjEyN2Q2OWY0ZWE1OWRlMGZiMzFjZDdmZGI3ZGNmZTA3Yg==
+- name: export_dashboard
+  version: !binary |-
+    MDE3NmY2NTA2ODY1YjNmODIwNzEyNWE1OWI0YTcwZGRjNWM1MWY1ZA==
+  fingerprint: !binary |-
+    MDE3NmY2NTA2ODY1YjNmODIwNzEyNWE1OWI0YTcwZGRjNWM1MWY1ZA==
+  sha1: !binary |-
+    ZjBkYmU1MDFmNDU0MTU5ZmU2MmU4ZWU2YTFjYTU5NjA4ZjUxZDNkYQ==
+- name: taskrabbit_elasticsearch_dump_image
+  version: !binary |-
+    Nzg5YWIxZWI2ZmMyMjQ0YjFmN2MzMzU0NGZiOTZlOWU5YjhiNTEzMA==
+  fingerprint: !binary |-
+    Nzg5YWIxZWI2ZmMyMjQ0YjFmN2MzMzU0NGZiOTZlOWU5YjhiNTEzMA==
+  sha1: !binary |-
+    MjI1OGFmNWQ0MGYxMjcwOGI2YjU5OTZmZmQ1N2U5MTAwNGEwZDk5MA==
+- name: import_dashboard
+  version: !binary |-
+    M2EyZjVlZGE2OWQ2YTgyODQ4YzRkZmJlZGNmMDBlOTE4YjYwYzA4YQ==
+  fingerprint: !binary |-
+    M2EyZjVlZGE2OWQ2YTgyODQ4YzRkZmJlZGNmMDBlOTE4YjYwYzA4YQ==
+  sha1: !binary |-
+    MGY2M2IyMTVjY2NiZmM2NWViY2NhYWIyN2JhOTIzNTQ1MDI0NzU3Zg==
+license:
+  version: !binary |-
+    ZWYzZjJiNjIzNDMwMzE3ZTEzMjAxNDJiMWU3MTdjZGE5MDA5ZjlhNQ==
+  fingerprint: !binary |-
+    ZWYzZjJiNjIzNDMwMzE3ZTEzMjAxNDJiMWU3MTdjZGE5MDA5ZjlhNQ==
+  sha1: !binary |-
+    NTc0NzA5ODFjNWU4NzdjZTA4Mjc2YWEwMWU3MzVlODk2OGI0MTIwYg==
+commit_hash: 5e6c659b
+uncommitted_changes: true
+name: logsearch-cf-dashboards
+version: '2'
