@@ -8,9 +8,8 @@ properties:
   docker:
     tcp_address: 0.0.0.0
     port: 4243
-  ip-filter:
-    ips: (( jobs.export.networks.default.static_ips jobs.import.networks.default.static_ips ))
-    port: (( .properties.docker.port ))
+    tls: true
+    tls_verify: true
   elasticsearch:
     host: (( merge ))
     port: (( merge ))
@@ -27,7 +26,7 @@ jobs:
     release: docker
   - name: just_install_dashboards
     release: logsearch-cf-dashboards
-  - name: ip_filter
+  - name: taskrabbit_elasticsearch_dump_image
     release: logsearch-cf-dashboards
   instances: 1
   resource_pool: small_z1

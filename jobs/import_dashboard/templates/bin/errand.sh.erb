@@ -1,16 +1,19 @@
 #!/bin/bash
-set -e
-set -u
 
+set -e # exit immediately if a simple command exits with a non-zero status
+set -u # report the usage of uninitialized variables
+
+# Directory to store the Docker execution files
 export PATH=$PATH:/var/vcap/packages/docker/bin
 
+# Directory to store the Import errand files
 export JOB_DIR=/var/vcap/jobs/import_dashboard
 
 # Directory to store the Docker configuration files
 export DOCKER_CONF_DIR=${JOB_DIR}/config
 
 <% if_p('remote-docker.tls_cacert') do |tls_cacert| %>
-# Trust only remotes providing a certificate signed by the CA given here
+# Path to TLS CA certificate file
 export DOCKER_TLS_CACERT="--tlscacert=${DOCKER_CONF_DIR}/docker.cacert"
 <% end %>
 
@@ -24,18 +27,25 @@ export DOCKER_TLS_CERT="--tlscert=${DOCKER_CONF_DIR}/client.cert"
 export DOCKER_TLS_KEY="--tlskey=${DOCKER_CONF_DIR}/client.key"
 <% end %>
 
-
+# Elasticsearch hostname / IP address
 ES_HOST='<%= p("elasticsearch.host") %>'
+
+# Elasticsearch port number
 ES_PORT='<%= p("elasticsearch.port") %>'
+
+# Docker hostname / IP address
 <% p('remote-docker.host').each do |host| %>
 DOCKER_HOST='<%= host %>'
 <% end %>
+
+# Docker port number
 DOCKER_PORT='<%= p("remote-docker.port") %>'
 
+# Path to the file to import with dashboards, visualization and searches
 FILE=/opt/dashboards/kibana-exported.json
 
+# Command to import the dashboards, visualization and searches
 docker -D -H $DOCKER_HOST:$DOCKER_PORT --tlsverify ${DOCKER_TLS_CACERT:-} ${DOCKER_TLS_CERT:-} ${DOCKER_TLS_KEY:-} run -v /var/vcap/jobs/just_install_dashboards/config:/opt/dashboards --rm -i taskrabbit/elasticsearch-dump \
     --input=$FILE \
     --output=http://$ES_HOST:$ES_PORT/.kibana  \
     --type=data
-

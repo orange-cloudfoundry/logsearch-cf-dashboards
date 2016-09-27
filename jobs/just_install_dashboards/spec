@@ -1,6 +1,9 @@
 ---
 name: just_install_dashboards
+
 packages: []
+
 templates:
   config/kibana-exported.json.erb: config/kibana-exported.json
+
 properties: {}
