@@ -5,7 +5,9 @@ releases:
   version: latest
 
 properties:
+  <<: (( merge ))
   docker:
+    <<: (( merge ))
     tcp_address: 0.0.0.0
     port: 4243
     tls: true
@@ -14,6 +16,7 @@ properties:
     host: (( merge ))
     port: (( merge ))
   remote-docker:
+    <<: (( merge ))
     host: (( jobs.elasticdump.networks.default.static_ips ))
     port: (( .properties.docker.port ))
 
