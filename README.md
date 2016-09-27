@@ -5,7 +5,7 @@ This release is an add-on for [Logsearch] (http://www.logsearch.io) and its [BOS
 ## Prerequisite
 
 The release has been tested with
-- Logsearch v203.0.0 (Kibana v4.4) and
+- Logsearch v203.0.0 (Kibana v4.4)
 - [Docker BOSH release] (https://github.com/cloudfoundry-community/docker-boshrelease) v27
 - [Spiff] (https://github.com/cloudfoundry-incubator/spiff)
 - Internet access
