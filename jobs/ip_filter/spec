@@ -1,6 +1,8 @@
 ---
 name: ip_filter
+
 packages: []
+
 templates:
   bin/ctl: bin/ctl
   bin/monit_debugger: bin/monit_debugger
@@ -10,7 +12,7 @@ templates:
 
 properties:
   ip-filter.ips:
-    description: Array of IP addresses allowed to connect Docker
+    description: "Array of IP addresses allowed to connect Docker"
   ip-filter.port:
-    description: Docker port number
+    description: "Docker port number"
 

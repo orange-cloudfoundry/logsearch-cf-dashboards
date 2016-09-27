@@ -1,7 +1,9 @@
 ---
 name: import_dashboard
+
 packages:
-- docker
+  - docker
+
 templates:
   bin/run: bin/run
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
@@ -13,15 +15,15 @@ templates:
 
 properties:
   elasticsearch.host:
-    description: elasticsearch hostname or IP address
+    description: "Elasticsearch hostname or IP address"
   elasticsearch.port:
-    description: elasticsearch port number
+    description: "Elasticsearch port number"
   remote-docker.host:
-    description: docker hostname or IP address
+    description: "Docker hostname or IP address"
   remote-docker.port:
-    description: docker port number
+    description: "Docker port number"
   remote-docker.tls_cacert:
-    description: "Trust only remotes providing a certificate signed by the CA given here"
+    description: "TLS trusted CA certificate in one line"
   docker-client.tls_cert:
     description: "TLS certificate in one line"
   docker-client.tls_key:

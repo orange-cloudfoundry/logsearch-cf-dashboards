@@ -1,29 +1,30 @@
 ---
 name: export_dashboard
+
 packages:
-- docker
+  - docker
+
 templates:
   bin/run: bin/run
-  bin/errand.sh.erb: bin/errand.sh
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
+  bin/errand.sh.erb: bin/errand.sh
   config/docker.cacert.erb: config/docker.cacert
   config/client.cert.erb: config/client.cert
   config/client.key.erb: config/client.key
 
 properties:
   elasticsearch.host:
-    description: elasticsearch hostname or IP address
+    description: "Elasticsearch hostname or IP address"
   elasticsearch.port:
-    description: elasticsearch port number
+    description: "Elasticsearch port number"
   remote-docker.host:
-    description: docker hostname or IP address
+    description: "Docker hostname or IP address"
   remote-docker.port:
-    description: docker port number
+    description: "Docker port number"
   remote-docker.tls_cacert:
-    description: "Trust only remotes providing a certificate signed by the CA given here"
+    description: "TLS trusted CA certificate in one line"
   docker-client.tls_cert:
     description: "TLS certificate in one line"
   docker-client.tls_key:
     description: "TLS key in one line"
-

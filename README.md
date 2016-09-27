@@ -6,7 +6,7 @@ This release is an add-on for [Logsearch] (http://www.logsearch.io) and its [BOS
 
 The release has been tested with
 - Logsearch v203.0.0 (Kibana v4.4) and
-- [Docker BOSH release] (https://github.com/cloudfoundry-community/docker-boshrelease) v27.
+- [Docker BOSH release] (https://github.com/cloudfoundry-community/docker-boshrelease) v27
 - [Spiff] (https://github.com/cloudfoundry-incubator/spiff)
 - Internet access
 
@@ -18,8 +18,7 @@ To use this bosh release, first upload it to your bosh:
 bosh target BOSH_HOST
 git clone https://github.com/cloudfoundry-community/logsearch-cf-dashboards-boshrelease.git
 cd logsearch-cf-dashboards-boshrelease
-bosh create release --force
-bosh upload release
+bosh upload release releases/logsearch-cf-dashboards/logsearch-cf-dashboards-{latest}.yml
 ```
 
 ### Deployment Manifests and Deploy
@@ -56,15 +55,19 @@ The exported dashboards, visualization and searches from your Logsearch (Elastic
 
 ## Development
 
-Inspired by the project [elasticdump] (https://github.com/taskrabbit/elasticsearch-dump) we created a BOSH release to import and export dashboards, visualization and searches for the Cloud Foundry metrics inside Logsearch (Kibana). The release includes 4 jobs: import and export errand jobs, IP address filter job and a job to upload default dashboards, visualization and searches. The last 2 jobs are located on a single instance. This instance contains a Docker server which executes elasticdump to import and export.
+Inspired by the project [elasticdump] (https://github.com/taskrabbit/elasticsearch-dump) we created a BOSH release to import and export dashboards, visualization and searches for the Cloud Foundry metrics inside Logsearch (Kibana). The release includes 5 jobs: import and export errand jobs, IP address filter job, a job with offline elasticdump and a job to upload default dashboards, visualization and searches. The last 3 jobs could be located on a single instance. This instance contains a Docker server which executes elasticdump to import and export.
 
 ### Import and Export Errand Jobs
 
 These jobs represent 2 errands to import and export dashboards, visualization and searches. Each job includes elasticdump and a Docker client which sends commands to the Docker server on the main instance. The jobs take as variables the Docker server IP address and port (main instance) and IP address and port of Elasticsearch.
 
+### TLS Certificates
+
+Communacation between the Docker server and the client is secured with TLS certificates. These parameters have to be updated in the deployment manifest (see example stub file).
+
 ### IP Address Filter job
 
-This is job aims to filter incoming requests to the Docker server on the main instance with iptables since the server is bind to `0.0.0.0`. So we limited access to the server to all the docker requests except from the import and export instances.
+This optional job aims to filter incoming requests to the Docker server on the main instance with iptables since the server is bind to `0.0.0.0`. So we limited access to the server to all the docker requests except from the import and export instances.
 
 
 
